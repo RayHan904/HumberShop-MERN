@@ -84,26 +84,7 @@ The Humber Shop application is open-source and released under the [MIT License](
 If you have any questions or need further assistance, please feel free to contact Rehan Ali[dev.rayhan98@gmail.com](mailto:dev.rayhan98@gmail.com).
 
 Happy shopping with Humber Shop!
-### Built  By:
-
 ### To test the Admin's UI signin using email: 
 user: dev.rayhan98@gmail.com
 password: 123456                           
 
-
-- Charandeep Singh 
-    - Login 
-    - Registeration
-
-- Sawan Kumar Khanna
-    - Reviews
-    - Cart functionality
-  
-- Anishika Sharma
-    - Home Screen
-    - Products Screen
-  
-- Mohammed Rehan Ali
-    - Implementation of Redux
-    - Users Routes 
-    - Admin Functionality
