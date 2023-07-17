@@ -86,7 +86,24 @@ If you have any questions or need further assistance, please feel free to contac
 Happy shopping with Humber Shop!
 ### Built  By:
 
-- Mohammed Rehan Ali
-- Charandeep Singh
+### To test the Admin's UI signin using email: 
+user: dev.rayhan98@gmail.com
+password: 123456                           
+
+
+- Charandeep Singh 
+    - Login 
+    - Registeration
+
 - Sawan Kumar Khanna
+    - Reviews
+    - Cart functionality
+  
 - Anishika Sharma
+    - Home Screen
+    - Products Screen
+  
+- Mohammed Rehan Ali
+    - Implementation of Redux
+    - Users Routes 
+    - Admin Functionality
