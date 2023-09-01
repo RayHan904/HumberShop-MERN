@@ -42,6 +42,8 @@ const ProductScreen = () => {
     refetch,
     error,
   } = useGetProductDetailsQuery(productId);
+
+  
   const { userInfo } = useSelector((state) => state.auth);
 
   const [createReview, { isLoading: loadingProductReview }] =
