@@ -10,7 +10,9 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      const item = action.payload;
+      // NOTE: we don't need user, rating, numReviews or reviews
+      // in the cart
+      const { user, rating, numReviews, reviews, ...item } = action.payload;
 
       const existItem = state.cartItems.find((x) => x._id === item._id);
 
@@ -26,24 +28,23 @@ const cartSlice = createSlice({
     },
     removeFromCart: (state, action) => {
       state.cartItems = state.cartItems.filter((x) => x._id !== action.payload);
-
       return updateCart(state);
     },
-
     saveShippingAddress: (state, action) => {
       state.shippingAddress = action.payload;
-      return updateCart(state);
+      localStorage.setItem("cart", JSON.stringify(state));
     },
-
     savePaymentMethod: (state, action) => {
       state.paymentMethod = action.payload;
-      return updateCart(state);
+      localStorage.setItem("cart", JSON.stringify(state));
     },
-
-    cleraCartItems: (state, action) => {
+    clearCartItems: (state, action) => {
       state.cartItems = [];
-      return updateCart(state);
+      localStorage.setItem("cart", JSON.stringify(state));
     },
+    // NOTE: here we need to reset state for when a user logs out so the next
+    // user doesn't inherit the previous users cart and shipping
+    resetCart: (state) => (state = initialState),
   },
 });
 
@@ -52,7 +53,8 @@ export const {
   removeFromCart,
   saveShippingAddress,
   savePaymentMethod,
-  cleraCartItems,
+  clearCartItems,
+  resetCart,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

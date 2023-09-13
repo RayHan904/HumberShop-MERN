@@ -11,7 +11,7 @@ import {
   useGetOrderDetailsQuery,
   useGetPaypalClientIdQuery,
   usePayOrderMutation,
-} from "../slices/ordersApiSlice";
+} from "../slices/orderApiSlice";
 
 const OrderScreen = () => {
   const { id: orderId } = useParams();
@@ -70,12 +70,13 @@ const OrderScreen = () => {
     });
   }
 
-  async function onApproveTest() {
-    await payOrder({ orderId, details: { payer: {} } });
-    refetch();
+  // TESTING ONLY! REMOVE BEFORE PRODUCTION
+  // async function onApproveTest() {
+  //   await payOrder({ orderId, details: { payer: {} } });
+  //   refetch();
 
-    toast.success("Order is paid");
-  }
+  //   toast.success('Order is paid');
+  // }
 
   function onError(err) {
     toast.error(err.message);
@@ -103,7 +104,7 @@ const OrderScreen = () => {
   return isLoading ? (
     <Loader />
   ) : error ? (
-    <Message variant="danger">{error}</Message>
+    <Message variant="danger">{error?.data?.message}</Message>
   ) : (
     <>
       <h1>Order {order._id}</h1>
@@ -143,7 +144,10 @@ const OrderScreen = () => {
               {order.isPaid ? (
                 <Message variant="success">Paid on {order.paidAt}</Message>
               ) : (
-                <Message variant="danger">Not Paid</Message>
+                <>
+                  <Message variant="danger">Not Paid</Message>
+                  console.log(order)
+                </>
               )}
             </ListGroup.Item>
 
@@ -218,12 +222,13 @@ const OrderScreen = () => {
                     <Loader />
                   ) : (
                     <div>
-                      <Button
-                        style={{ marginBottom: "10px" }}
+                      {/* THIS BUTTON IS FOR TESTING! REMOVE BEFORE PRODUCTION! */}
+                      {/* <Button
+                        style={{ marginBottom: '10px' }}
                         onClick={onApproveTest}
                       >
                         Test Pay Order
-                      </Button>
+                      </Button> */}
 
                       <div>
                         <PayPalButtons
